@@ -6,14 +6,14 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 18:40:20 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/01/08 16:41:46 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/01/08 17:38:37 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-int	ft_parsing(va_list ap, const char *format)
+int	ft_parsing(va_list ap, const char *format, int size)
 {
 	while (*format)
 	{
@@ -24,8 +24,9 @@ int	ft_parsing(va_list ap, const char *format)
 		else
 			ft_putchar_fd(*format, 1);
 		format++;
+		size++;
 	}
-	return (0);
+	return (size);
 }
 
 int	ft_parseconv(va_list ap, const char **format)
@@ -57,10 +58,13 @@ int	ft_parseconv(va_list ap, const char **format)
 int	ft_printf(const char *format, ...)
 {
 	va_list ap;
+	int size;
 
+	size = 0;
 	va_start(ap, format);
-	ft_parsing(ap, format);
+	size = ft_parsing(ap, format, size);
 	va_end(ap);
+	printf("\n\n\nsize %d\n", size);
 
-	return (0);
+	return (size);
 }

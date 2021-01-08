@@ -6,7 +6,7 @@
 #    By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/17 18:10:22 by jzeybel           #+#    #+#              #
-#    Updated: 2021/01/08 16:55:50 by jzeybel          ###   ########.fr        #
+#    Updated: 2021/01/08 17:36:29 by jzeybel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,10 +24,10 @@ $(NAME) : $(OBJ)
 	make -C libft
 	cp ./libft/libft.a ./libftprintf.a
 	ar rcs $(NAME) $(OBJ)
-	#$(CC) $(CFLAGS) main.c libftprintf.a
+	$(CC) $(CFLAGS) ../main.c libftprintf.a
 
 all : $(NAME)
-	#$(CC) $(CFLAGS) main.c libftprintf.a
+	$(CC) $(CFLAGS) ../main.c libftprintf.a
 
 debug : CFLAGS += -g -fsanitize=address
 debug : $(NAME)

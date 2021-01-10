@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 18:40:20 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/01/09 13:12:01 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/01/10 04:13:42 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_parsing(va_list ap, const char *format, int size)
 	{
 		if (*format == '%' && *(format + 1))
 		{
-			ft_parseconv(ap, &format);
+			ft_parseconv(ap, &format, size);
 		}
 		else
 			ft_putchar_fd(*format, 1);
@@ -29,33 +29,42 @@ int	ft_parsing(va_list ap, const char *format, int size)
 	return (size);
 }
 
-int	ft_parseconv(va_list ap, const char **format)
+int	ft_parseconv(va_list ap, const char **format, int size)
 {
 
 	(*format)++;
 	if (**format == 'c')
-		ft_putchar_fd(va_arg(ap, int), 1);
-	if (**format == 's')
-		ft_putstr_fd(va_arg(ap, char *), 1);
-	if (**format == 'd' || **format == 'i')
-		ft_putnbr_fd(va_arg(ap, int), 1);
-	if (**format == 'u')
-		ft_putnbr_fd(va_arg(ap, unsigned int), 1);
-	if (**format == '%')
-		ft_putchar_fd('%', 1);
-	if (**format == 'l')
+		size += ft_putchar_fd(va_arg(ap, int), 1);
+	else if (**format == 's')
+		size += ft_putstr_fd(va_arg(ap, char *), 1);
+	else if (**format == 'p')
+	{
+		size += ft_printf("0x");
+		size += ft_putbase_fd(va_arg(ap, unsigned long), "0123456789abcdef", 16, 1);
+	}
+	else if (**format == 'd' || **format == 'i')
+		/*size +=*/ ft_putnbr_fd(va_arg(ap, int), 1);
+	else if (**format == 'u')
+		/*size +=*/ ft_putnbr_fd(va_arg(ap, unsigned int), 1);
+	else if (**format == 'x')
+		size += ft_putbase_fd(va_arg(ap, unsigned int), "0123456789abcdef", 16, 1);
+	else if (**format == 'X')
+		size += ft_putbase_fd(va_arg(ap, unsigned int), "0123456789ABCDEF", 16, 1);
+	else if (**format == '%')
+		size += ft_putchar_fd('%', 1);
+	else if (**format == 'l')
 	{
 		(*format)++;
 		if (**format == 'i' || **format == 'd')
-			ft_putnbr_fd(va_arg(ap, long), 1);
-		if (**format == 'l')
+			/*size +=*/ ft_putnbr_fd(va_arg(ap, long), 1);
+		else if (**format == 'l')
 		{
 			(*format)++;
 			if (**format == 'i' || **format == 'd')
-				ft_putnbr_fd(va_arg(ap, long long), 1);
+				/*size +=*/ ft_putnbr_fd(va_arg(ap, long long), 1);
 		}
 	}
-	return (0);
+	return (size);
 	(*format)++;
 }
 

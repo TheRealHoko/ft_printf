@@ -6,7 +6,7 @@
 #    By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/17 18:10:22 by jzeybel           #+#    #+#              #
-#    Updated: 2021/01/10 04:21:52 by jzeybel          ###   ########.fr        #
+#    Updated: 2021/01/18 00:00:49 by jzeybel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,10 @@ CC  = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = ft_printf.c
+SRC = src/ft_printf.c \
+	  src/buffer.c
+
+INC = inc/ft_printf.h
 
 OBJ = $(SRC:.c=.o)
 
@@ -24,13 +27,11 @@ $(NAME) : $(OBJ)
 	make -C libft
 	cp ./libft/libft.a ./libftprintf.a
 	ar rcs $(NAME) $(OBJ)
-	#$(CC) $(CFLAGS) ../main.c libftprintf.a
 
 all : $(NAME)
-	#$(CC) $(CFLAGS) ../main.c libftprintf.a
 
 debug : CFLAGS += -g -fsanitize=address
-debug : $(NAME)
+debug : main
 
 main : all
 	$(CC) $(CFLAGS) ../main.c libftprintf.a

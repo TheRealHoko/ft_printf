@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 18:40:20 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/01/21 13:58:55 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/01/21 14:03:32 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ void	ft_parsing(va_list ap, const char *format)
 
 void	ft_parseflag(const char **format)
 {
-	if (**format == '-')
-	if (**format == '-')
+	(void)format;
+	//if (**format == '-')
+	//if (**format == '-')
 }
 
 void	ft_parseconv(va_list ap, const char **format)

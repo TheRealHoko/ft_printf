@@ -6,65 +6,42 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 18:40:20 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/01/21 14:03:32 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/01/28 15:56:41 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_printf.h"
-#include <stdio.h>
 
-void	ft_parsing(va_list ap, const char *format)
+void	init_flags(t_flags *flags)
 {
-	while (*format)
+	flags->i = 0;
+	flags->minus = 0;
+	flags->zero = 0;
+	flags->width = 0;
+	flags->precision = 0;
+}
+
+void	ft_parsing(va_list ap, const char *format, t_flags *flags)
+{
+	while (format[flags->i])
 	{
-		if (*format == '%' && *(format + 1))
-		{
-			ft_parseflag(&format);
-			ft_parseconv(ap, &format);
-		}
+		if (format[flags->i] == '%' && format[flags->i++])
+			ft_parse_flag(ap, format, flags);
 		else
-			writec_buf(*format);
-		format++;
+			writec_buf(format[flags->i]);
+		flags->i++;
 	}
-}
-
-void	ft_parseflag(const char **format)
-{
-	(void)format;
-	//if (**format == '-')
-	//if (**format == '-')
-}
-
-void	ft_parseconv(va_list ap, const char **format)
-{
-	(*format)++;
-	if (**format == 'c')
-		write_c(ap);
-	else if (**format == 's')
-		write_s(ap);
-	else if (**format == 'p')
-		write_p(ap);
-	else if (**format == 'd' || **format == 'i')
-		write_di(ap);
-	else if (**format == 'u')
-		write_u(ap);
-	else if (**format == 'x')
-		write_x(ap);
-	else if (**format == 'X')
-		write_X(ap);
-	else if (**format == '%')
-		write_pct();
-	else if (**format == 'l')
-		write_llldx(ap, format);
 }
 
 int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
+	t_flags flags;
 
 	init_buf();
+	init_flags(&flags);
 	va_start(ap, format);
-	ft_parsing(ap, format);
+	ft_parsing(ap, format, &flags);
 	va_end(ap);
 
 	return (display_buf(1));

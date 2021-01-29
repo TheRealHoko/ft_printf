@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 17:19:32 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/01/18 03:23:21 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/01/29 15:44:43 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,9 @@ void	writestr_buf(char *s)
 
 void	fill_buffer(char s, int i)
 {
-	while (g_buf.i < i)
+	int	j;
+
+	j = -1;
+	while (++j < i)
 		writec_buf(s);
 }

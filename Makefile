@@ -6,7 +6,7 @@
 #    By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/17 18:10:22 by jzeybel           #+#    #+#              #
-#    Updated: 2021/01/21 13:33:47 by jzeybel          ###   ########.fr        #
+#    Updated: 2021/01/22 15:13:35 by jzeybel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,11 +19,14 @@ CFLAGS = -Wall -Wextra -Werror
 SRC = src/ft_printf.c \
 	  src/buffer.c \
 	  src/ft_write_cspdiu.c \
-	  src/ft_write_xXpctl.c
+	  src/ft_write_xXpctl.c \
+	  src/ft_parsing.c
 
 INC = inc/ft_printf.h
 
 DBRULE =
+
+MAIN = ../main.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -39,7 +42,7 @@ debug : DBRULE += redebug
 debug : main
 
 main : all
-	$(CC) $(CFLAGS) ../main.c libftprintf.a
+	$(CC) $(CFLAGS) $(MAIN) libftprintf.a
 
 .c.o :
 	$(CC) $(CFLAGS) -c $< -o $@

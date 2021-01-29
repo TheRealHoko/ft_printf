@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 17:55:56 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/01/29 15:56:18 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/01/29 16:12:57 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_parse_width(va_list ap, const char *format, t_flags *flags)
 		flags->width = va_arg(ap, long);
 		flags->i++;
 	}
-	else if (ft_isdigit_one(format[flags->i]))
+	else if (ft_isrange('1', '9', format[flags->i]))
 	{
 		flags->width = ft_atoll(format + flags->i);
 		while (ft_isdigit(format[flags->i]))

@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 16:32:18 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/02 13:39:05 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/02 14:11:31 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,14 @@ void	write_s(va_list ap, t_flags *flags)
 
 void	write_pct(t_flags *flags)
 {
-	(void)flags;
 	char	array[2];
 
 	array[0] = '%';
+	if (flags->width && !flags->minus)
+		width(1, flags);
 	writestr_buf(array, 1);
+	if (flags->width && flags->minus)
+		width(1, flags);
 }
 
 

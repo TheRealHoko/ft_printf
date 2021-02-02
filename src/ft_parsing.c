@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 17:55:56 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/01/29 16:12:57 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/02 13:28:38 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_parse_width(va_list ap, const char *format, t_flags *flags)
 {
 	if (format[flags->i] == '*')
 	{
-		flags->width = va_arg(ap, long);
+		flags->width = va_arg(ap, unsigned int);
 		flags->i++;
 	}
 	else if (ft_isrange('1', '9', format[flags->i]))
@@ -45,8 +45,32 @@ void	ft_parse_width(va_list ap, const char *format, t_flags *flags)
 			flags->i++;
 	}
 	else
-		return (ft_parse_conv(ap, format, flags));
+		return (ft_parse_prec(ap, format, flags));
 	return (ft_parse_width(ap, format, flags));
+}
+
+void	ft_parse_prec(va_list ap, const char *format, t_flags *flags)
+{
+	if (format[flags->i] == '.')
+	{
+		flags->width = 0;
+		flags->prec = 0;
+		flags->i++;
+	}
+	else if (format[flags->i] == '*')
+	{
+		flags->prec = va_arg(ap, unsigned int);
+		flags->i++;
+	}
+	else if (ft_isrange('1', '9', format[flags->i]))
+	{
+		flags->prec = ft_atoll(format + flags->i);
+		while (ft_isdigit(format[flags->i]))
+			flags->i++;
+	}
+	else
+		return (ft_parse_conv(ap, format, flags));
+	return (ft_parse_prec(ap, format, flags));
 }
 
 void	ft_parse_conv(va_list ap, const char *format, t_flags *flags)
@@ -67,6 +91,4 @@ void	ft_parse_conv(va_list ap, const char *format, t_flags *flags)
 		write_X(ap, flags);
 	else if (format[flags->i] == '%')
 		write_pct(flags);
-	//else if (**format == 'l')
-	//	write_llldx(ap, *format, flags);
 }

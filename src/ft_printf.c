@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 18:40:20 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/01/28 15:56:41 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/02 13:28:53 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 void	init_flags(t_flags *flags)
 {
 	flags->i = 0;
+	flags->sign = 1;
 	flags->minus = 0;
 	flags->zero = 0;
 	flags->width = 0;
-	flags->precision = 0;
+	flags->prec = -1;
 }
 
 void	ft_parsing(va_list ap, const char *format, t_flags *flags)

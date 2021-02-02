@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 17:55:56 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/02 14:20:13 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/02 18:34:00 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 void	ft_parse_flag(va_list ap, const char *format, t_flags *flags)
 {
+	flags->i++;
 	if (format[flags->i] == '-')
 	{
 		flags->minus = 1;
@@ -27,7 +28,6 @@ void	ft_parse_flag(va_list ap, const char *format, t_flags *flags)
 	}
 	else
 		return (ft_parse_width(ap, format, flags));
-	flags->i++;
 	return (ft_parse_flag(ap , format, flags));
 }
 

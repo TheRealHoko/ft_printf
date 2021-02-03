@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 18:40:20 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/02 19:22:08 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/03 21:48:53 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,14 @@ void	init_flags(t_flags *flags)
 
 void	ft_parsing(va_list ap, const char *format, t_flags *flags)
 {
-	char	*c;
-	char	*isflag;
-
-	c = "cspdiuxX";
-	isflag = ft_strnstr(format + flags->i, c, ft_strlen(format));
-	while (format[flags->i] != '\0')
+	while (format[flags->i])
 	{
-		if ((format[flags->i] == '%') && isflag)
-		{
-			printf("oui\n");
+		if ((format[flags->i] == '%') && format[flags->i + 1])
 			ft_parse_flag(ap, format, flags);
-		}
 		else
 			writec_buf(format[flags->i]);
+		if (format[flags->i] == '\0')
+			break;
 		flags->i++;
 	}
 }

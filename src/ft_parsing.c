@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 17:55:56 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/03 21:43:07 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/03 22:15:53 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	ft_parse_prec(va_list ap, const char *format, t_flags *flags)
 		flags->prec = va_arg(ap, unsigned int);
 		flags->i++;
 	}
-	else if (ft_isrange('1', '9', format[flags->i]))
+	else if (ft_isdigit(format[flags->i]))
 	{
 		flags->prec = ft_atoll(format + flags->i);
 		while (ft_isdigit(format[flags->i]))

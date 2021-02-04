@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 16:32:18 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/04 17:28:28 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/04 17:38:02 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,11 @@ void	write_s(va_list ap, t_flags *flags)
 	int		len;
 
 	array = va_arg(ap, char *);
+	if (!array)
+	{
+		init_flags(flags);
+		array = "(null)";
+	}
 	len = ft_strlen(array);
 	if (flags->prec > -1)
 	{

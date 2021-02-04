@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 12:42:27 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/04 18:38:31 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/04 18:41:13 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	write_di(va_list ap, t_flags *flags)
 		prec(len, flags, 0);
 	if ((flags->width || flags->zero) && !flags->minus)
 		width(len, flags);
-	if (!flags->prec && !flags->zero && flags->sign == -1)
+	else
 		writec_buf('-');
 	writestr_buf(array, len);
 	if (flags->width && flags->minus)

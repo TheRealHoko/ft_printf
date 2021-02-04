@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 17:55:56 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/03 22:15:53 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/04 16:57:26 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ void	ft_parse_width(va_list ap, const char *format, t_flags *flags)
 {
 	if (format[flags->i] == '*')
 	{
-		flags->width = va_arg(ap, unsigned int);
+		flags->width = va_arg(ap, int);
+		if (flags->width < 0)
+			flags->minus = 1;
 		flags->i++;
 	}
 	else if (ft_isrange('1', '9', format[flags->i]))

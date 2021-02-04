@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 17:55:56 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/04 17:09:14 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/04 17:34:10 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	ft_parse_prec(va_list ap, const char *format, t_flags *flags)
 {
 	if (format[flags->i] == '.')
 	{
-		flags->width = 0;
+		//flags->width = 0;
 		flags->prec = 0;
 		flags->i++;
 	}

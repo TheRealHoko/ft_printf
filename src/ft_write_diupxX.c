@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 12:42:27 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/02 13:37:59 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/04 17:22:13 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	write_di(va_list ap, t_flags *flags)
 	array = ft_lltoa(i * flags->sign);
 	len = ft_strlen(array);
 	if (flags->prec > len)
-		prec(len, flags);
+		prec(len, flags, 0);
 	if ((flags->width || flags->zero) && !flags->minus)
 		width(len, flags);
 	writestr_buf(array, len);
@@ -44,7 +44,7 @@ void	write_u(va_list ap, t_flags *flags)
 	array = ft_lltoa(va_arg(ap, unsigned int));
 	len = ft_strlen(array);
 	if (flags->prec > len)
-		prec(len, flags);
+		prec(len, flags, 0);
 	if ((flags->width || flags->zero) && !flags->minus)
 		width(len, flags);
 	writestr_buf(array, len);
@@ -60,7 +60,7 @@ void	write_x(va_list ap, t_flags *flags)
 	array = ft_ulltoa_base(va_arg(ap, int), "0123456789abcdef");
 	len = ft_strlen(array);
 	if (flags->prec > len)
-		prec(len, flags);
+		prec(len, flags, 0);
 	if ((flags->width || flags->zero) && !flags->minus)
 		width(len, flags);
 	writestr_buf(array, len);
@@ -77,7 +77,7 @@ void	write_X(va_list ap, t_flags *flags)
 	array = ft_ulltoa_base(va_arg(ap, int), "0123456789ABCDEF");
 	len = ft_strlen(array);
 	if (flags->prec > len)
-		prec(len, flags);
+		prec(len, flags, 0);
 	if ((flags->width || flags->zero) && !flags->minus)
 		width(len, flags);
 	writestr_buf(array, len);

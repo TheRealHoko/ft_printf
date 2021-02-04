@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 16:32:18 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/02 14:11:31 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/04 17:28:28 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,15 @@ void	width(int len, t_flags *flags)
 		fill_buffer(' ', flags->width);
 }
 
-void	prec(int len, t_flags *flags)
+void	prec(int len, t_flags *flags, int iss)
 {
-	flags->prec -= len;
 	if (flags->sign == -1)
 		writec_buf('-');
-	fill_buffer('0', flags->prec);
+	if (!iss)
+	{
+		flags->prec -= len;
+		fill_buffer('0', flags->prec);
+	}
 }
 
 void	write_c(va_list ap, t_flags *flags)
@@ -51,7 +54,11 @@ void	write_s(va_list ap, t_flags *flags)
 	array = va_arg(ap, char *);
 	len = ft_strlen(array);
 	if (flags->prec > -1)
-		len = flags->prec;
+	{
+		prec(len, flags, 1);
+		if (flags->prec < len)
+			len = flags->prec;
+	}
 	if (flags->width && !flags->minus)
 		width(len, flags);
 	writestr_buf(array, len);

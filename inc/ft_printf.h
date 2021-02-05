@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 18:46:14 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/05 15:47:01 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/05 15:57:05 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_parse_flag(va_list ap, const char *format, t_flags *flags);
 void	ft_parse_width(va_list ap, const char *format, t_flags *flags);
 void	ft_parse_prec(va_list ap, const char *format, t_flags *flags);
 void	ft_parse_conv(va_list ap, const char *format, t_flags *flags);
-void    init_flags(t_flags *flags);
+void    init_flags(t_flags *flags, int i);
 
 void    init_buf(void);
 void	writec_buf(char s);

@@ -6,15 +6,16 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 18:40:20 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/03 21:48:53 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/05 15:58:42 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_printf.h"
 #include <stdio.h>
-void	init_flags(t_flags *flags)
+void	init_flags(t_flags *flags, int i)
 {
-	flags->i = 0;
+	if (i)
+		flags->i = 0;
 	flags->sign = 1;
 	flags->minus = 0;
 	flags->zero = 0;
@@ -42,7 +43,7 @@ int	ft_printf(const char *format, ...)
 	t_flags flags;
 
 	init_buf();
-	init_flags(&flags);
+	init_flags(&flags, 1);
 	va_start(ap, format);
 	ft_parsing(ap, format, &flags);
 	va_end(ap);

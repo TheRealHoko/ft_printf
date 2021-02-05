@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 18:46:14 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/04 17:22:35 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/05 15:47:01 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	writestr_buf(char *s, int i);
 int		display_buf(int fd);
 void    fill_buffer(char s, int i);
 
-void	width(int len, t_flags *flags);
+void	width(int len, t_flags *flags, int iss);
 void	prec(int len, t_flags *flags, int iss);
 void	write_c(va_list ap, t_flags *flags);
 void	write_s(va_list ap, t_flags *flags);

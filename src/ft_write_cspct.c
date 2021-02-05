@@ -6,13 +6,13 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 16:32:18 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/05 15:38:10 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/05 15:48:02 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_printf.h"
 
-void	width(int len, t_flags *flags)
+void	width(int len, t_flags *flags, int iss)
 {
 	flags->width -= len;
 	if (flags->prec > len)
@@ -26,7 +26,7 @@ void	width(int len, t_flags *flags)
 	else
 		fill_buffer(' ', flags->width);
 	if (flags->prec > len)
-		return (prec(len, flags, 0));
+		return (prec(len, flags, iss));
 }
 
 void	prec(int len, t_flags *flags, int iss)
@@ -46,10 +46,10 @@ void	write_c(va_list ap, t_flags *flags)
 
 	array[0] = va_arg(ap, int);
 	if (flags->width && !flags->minus)
-		width(1, flags);
+		width(1, flags, 0);
 	writestr_buf(array, 1);
 	if (flags->width && flags->minus)
-		width(1, flags);
+		width(1, flags, 0);
 }
 
 void	write_s(va_list ap, t_flags *flags)
@@ -68,10 +68,10 @@ void	write_s(va_list ap, t_flags *flags)
 			len = flags->prec;
 	}
 	if (flags->width && !flags->minus)
-		width(len, flags);
+		width(len, flags, 1);
 	writestr_buf(array, len);
 	if (flags->width && flags->minus)
-		width(len, flags);
+		width(len, flags, 1);
 }
 
 void	write_pct(t_flags *flags)
@@ -80,10 +80,10 @@ void	write_pct(t_flags *flags)
 
 	array[0] = '%';
 	if (flags->width && !flags->minus)
-		width(1, flags);
+		width(1, flags, 0);
 	writestr_buf(array, 1);
 	if (flags->width && flags->minus)
-		width(1, flags);
+		width(1, flags, 0);
 }
 
 

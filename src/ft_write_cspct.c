@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 16:32:18 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/05 17:08:18 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/05 17:21:06 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	prec(int len, t_flags *flags, int iss)
 {
 	if (flags->sign == -1)
 		writec_buf('-');
-	if (!iss)
+	if (!iss && (flags->prec > len))
 	{
 		flags->prec -= len;
 		fill_buffer('0', flags->prec);

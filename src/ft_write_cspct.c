@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 16:32:18 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/05 17:21:06 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/05 17:30:52 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	width(int len, t_flags *flags, int iss)
 	}
 	else
 		fill_buffer(' ', flags->width);
+	if ((flags->sign == -1) && !flags->zero)
+		writec_buf('-');
 	if (flags->prec > len)
 		return (prec(len, flags, iss));
 }

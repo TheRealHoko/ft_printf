@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 12:42:27 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/07 00:35:54 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/07 00:38:05 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,10 @@ void	write_u(va_list ap, t_flags *flags)
 {
 	char	*array;
 	int		len;
+	unsigned int	i;
 
-	array = ft_lltoa(va_arg(ap, unsigned int));
+	i = va_arg(ap, unsigned int);
+	array = ft_lltoa(i);
 	len = ft_strlen(array);
 	if ((flags->width || flags->zero) && !flags->minus)
 		width(len, flags, 0);

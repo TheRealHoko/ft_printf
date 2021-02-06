@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 12:42:27 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/07 00:41:18 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/07 00:43:04 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,15 +79,17 @@ void	write_X(va_list ap, t_flags *flags)
 {
 	char	*array;
 	int		len;
+	unsigned int	i;
 
-
-	array = ft_ulltoa_base(va_arg(ap, int), "0123456789ABCDEF");
+	i = va_arg(ap, unsigned int);
+	array = ft_ulltoa_base(i, "0123456789ABCDEF");
 	len = ft_strlen(array);
-	if (flags->prec > len)
-		prec(len, flags, 0);
 	if ((flags->width || flags->zero) && !flags->minus)
 		width(len, flags, 0);
-	writestr_buf(array, len);
+	else if ((flags->prec > len) || (flags->sign == -1))
+		prec(len, flags, 0);
+	if ((flags->prec != 0) || (i != 0))
+		writestr_buf(array, len);
 	if (flags->width && flags->minus)
 		width(len, flags, 0);
 }

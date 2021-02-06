@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 16:32:18 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/05 18:12:33 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/06 22:40:12 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,21 @@
 
 void	width(int len, t_flags *flags, int iss)
 {
-	flags->width -= len;
+	int	i;
+
 	if ((flags->prec > len) && !iss)
-		flags->width -= flags->prec - len;
+		i = flags->width - flags->prec;
+	else
+		i = flags->width - len;
 	if (flags->zero && (flags->prec == -1))
 	{
 		if (flags->sign == -1)
 			writec_buf('-');
-		fill_buffer('0', flags->width);
+		fill_buffer('0', i);
 	}
 	else
 	{
-		fill_buffer(' ', flags->width);
+		fill_buffer(' ', i);
 		if ((flags->sign == -1) && !flags->minus)
 		{
 			writec_buf('-');
@@ -38,12 +41,14 @@ void	width(int len, t_flags *flags, int iss)
 
 void	prec(int len, t_flags *flags, int iss)
 {
+	int	i;
+
 	if (flags->sign == -1)
 		writec_buf('-');
 	if (!iss && (flags->prec > len))
 	{
-		flags->prec -= len;
-		fill_buffer('0', flags->prec);
+		i = flags->prec - len;
+		fill_buffer('0', i);
 	}
 }
 

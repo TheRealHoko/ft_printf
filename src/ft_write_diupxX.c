@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 12:42:27 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/05 18:13:53 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/06 22:52:56 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	write_di(va_list ap, t_flags *flags)
 	int			len;
 
 	i = va_arg(ap, int);
+	if (!i && !flags->prec)
+		return ;
 	if (i < 0)
 	{
 		flags->sign = -1;

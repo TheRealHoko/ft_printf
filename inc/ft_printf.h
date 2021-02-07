@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 18:46:14 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/07 14:32:17 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/07 17:41:57 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_buf
 typedef struct s_flags
 {
 	int	i;
+	int	n;
 	int	sign;
 	int	minus;
 	int	zero;

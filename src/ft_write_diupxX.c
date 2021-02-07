@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 12:42:27 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/07 01:51:32 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/07 17:41:10 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,12 @@ void	write_di(va_list ap, t_flags *flags)
 	char		*array;
 	long long	i;
 	int			len;
+	int			iss;
 
+	iss = 0;
 	i = va_arg(ap, int);
+	if (!i)
+		flags->n = 0;
 	if (i < 0)
 	{
 		flags->sign = -1;
@@ -28,13 +32,13 @@ void	write_di(va_list ap, t_flags *flags)
 	array = ft_lltoa(i * flags->sign);
 	len = ft_strlen(array);
 	if ((flags->width || flags->zero) && !flags->minus)
-		width(len, flags, 0);
+		width(len, flags, iss);
 	else if ((flags->prec > len) || (flags->sign == -1))
-		prec(len, flags, 0);
+		prec(len, flags, iss);
 	if ((flags->prec != 0) || (i != 0))
 		writestr_buf(array, len);
 	if (flags->width && flags->minus)
-		width(len, flags, 0);
+		width(len, flags, iss);
 }
 
 void	write_u(va_list ap, t_flags *flags)

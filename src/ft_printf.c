@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 18:40:20 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/07 17:40:09 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/07 20:34:05 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <stdio.h>
 void	init_flags(t_flags *flags, int i)
 {
+	flags->c = 0;
 	if (i)
 		flags->i = 0;
 	flags->n = 1;

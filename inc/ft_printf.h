@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 18:46:14 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/07 17:41:57 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/07 20:53:41 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,14 @@ typedef struct s_buf
 
 typedef struct s_flags
 {
-	int	i;
-	int	n;
-	int	sign;
-	int	minus;
-	int	zero;
-	int	prec;
-	int	width;
+	char	c;
+	int		i;
+	int		n;
+	int		sign;
+	int		minus;
+	int		zero;
+	int		prec;
+	int		width;
 }				t_flags;
 
 int		ft_printf(const char *format, ...);
@@ -51,8 +52,8 @@ void	writestr_buf(char *s, int i);
 int		display_buf(int fd);
 void	fill_buffer(char s, int i);
 
-void	width(int len, t_flags *flags, int iss);
-void	prec(int len, t_flags *flags, int iss);
+void	width(int len, t_flags *flags);
+void	prec(int len, t_flags *flags);
 void	write_c(va_list ap, t_flags *flags);
 void	write_s(va_list ap, t_flags *flags);
 void	write_pct(t_flags *flags);

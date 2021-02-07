@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 12:42:27 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/07 00:53:03 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/07 00:55:49 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	write_u(va_list ap, t_flags *flags)
 	len = ft_strlen(array);
 	if ((flags->width || flags->zero) && !flags->minus)
 		width(len, flags, 0);
-	else if ((flags->prec > len) || (flags->sign == -1))
+	else if (flags->prec > len)
 		prec(len, flags, 0);
 	if ((flags->prec != 0) || (i != 0))
 		writestr_buf(array, len);
@@ -67,7 +67,7 @@ void	write_x(va_list ap, t_flags *flags)
 	len = ft_strlen(array);
 	if ((flags->width || flags->zero) && !flags->minus)
 		width(len, flags, 0);
-	else if ((flags->prec > len) || (flags->sign == -1))
+	else if (flags->prec > len)
 		prec(len, flags, 0);
 	if ((flags->prec != 0) || (i != 0))
 		writestr_buf(array, len);
@@ -86,7 +86,7 @@ void	write_X(va_list ap, t_flags *flags)
 	len = ft_strlen(array);
 	if ((flags->width || flags->zero) && !flags->minus)
 		width(len, flags, 0);
-	else if ((flags->prec > len) || (flags->sign == -1))
+	else if (flags->prec > len)
 		prec(len, flags, 0);
 	if ((flags->prec != 0) || (i != 0))
 		writestr_buf(array, len);
@@ -105,7 +105,7 @@ void	write_p(va_list ap, t_flags *flags)
 	len = ft_strlen(array);
 	if ((flags->width || flags->zero) && !flags->minus)
 		width(len + 2, flags, 0);
-	else if ((flags->prec > len + 2) || (flags->sign == -1))
+	else if (flags->prec > (len + 2))
 		prec(len + 2, flags, 0);
 	writestr_buf("0x", 2);
 	if ((flags->prec != 0) || (i != 0))

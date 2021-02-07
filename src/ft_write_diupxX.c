@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 12:42:27 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/07 17:41:10 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/07 17:53:52 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	write_u(va_list ap, t_flags *flags)
 	unsigned int	i;
 
 	i = va_arg(ap, unsigned int);
+	if (!i)
+		flags->n = 0;
 	array = ft_lltoa(i);
 	len = ft_strlen(array);
 	if ((flags->width || flags->zero) && !flags->minus)
@@ -67,6 +69,8 @@ void	write_x(va_list ap, t_flags *flags)
 	unsigned int	i;
 
 	i = va_arg(ap, unsigned int);
+	if (!i)
+		flags->n = 0;
 	array = ft_ulltoa_base(i, "0123456789abcdef");
 	len = ft_strlen(array);
 	if ((flags->width || flags->zero) && !flags->minus)
@@ -86,6 +90,8 @@ void	write_X(va_list ap, t_flags *flags)
 	unsigned int	i;
 
 	i = va_arg(ap, unsigned int);
+	if (!i)
+		flags->n = 0;
 	array = ft_ulltoa_base(i, "0123456789ABCDEF");
 	len = ft_strlen(array);
 	if ((flags->width || flags->zero) && !flags->minus)
@@ -105,6 +111,8 @@ void	write_p(va_list ap, t_flags *flags)
 	unsigned long long	i;
 
 	i = va_arg(ap, unsigned long long);
+	if (!i)
+		flags->n = 0;
 	array = ft_ulltoa_base(i, "0123456789abcdef");
 	len = ft_strlen(array);
 	if (!flags->prec && !i)

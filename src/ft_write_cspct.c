@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 16:32:18 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/07 00:31:55 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/07 01:17:56 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	width(int len, t_flags *flags, int iss)
 {
 	int	i;
 
-	if ((flags->prec > len || !flags->prec) && !iss)
+	if ((flags->prec > len /*|| !flags->prec*/) && !iss)
 		i = flags->width - flags->prec;
 	else
 		i = flags->width - len;

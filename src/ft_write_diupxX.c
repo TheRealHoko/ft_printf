@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 12:42:27 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/07 01:28:59 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/07 01:51:32 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void	write_di(va_list ap, t_flags *flags)
 
 void	write_u(va_list ap, t_flags *flags)
 {
-	char	*array;
-	int		len;
+	char			*array;
+	int				len;
 	unsigned int	i;
 
 	i = va_arg(ap, unsigned int);
@@ -58,8 +58,8 @@ void	write_u(va_list ap, t_flags *flags)
 
 void	write_x(va_list ap, t_flags *flags)
 {
-	char	*array;
-	int		len;
+	char			*array;
+	int				len;
 	unsigned int	i;
 
 	i = va_arg(ap, unsigned int);
@@ -77,8 +77,8 @@ void	write_x(va_list ap, t_flags *flags)
 
 void	write_X(va_list ap, t_flags *flags)
 {
-	char	*array;
-	int		len;
+	char			*array;
+	int				len;
 	unsigned int	i;
 
 	i = va_arg(ap, unsigned int);
@@ -96,8 +96,8 @@ void	write_X(va_list ap, t_flags *flags)
 
 void	write_p(va_list ap, t_flags *flags)
 {
-	char	*array;
-	int		len;
+	char				*array;
+	int					len;
 	unsigned long long	i;
 
 	i = va_arg(ap, unsigned long long);

@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 17:55:56 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/06 22:51:45 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/07 01:54:27 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_parse_flag(va_list ap, const char *format, t_flags *flags)
 	}
 	else
 		return (ft_parse_width(ap, format, flags));
-	return (ft_parse_flag(ap , format, flags));
+	return (ft_parse_flag(ap, format, flags));
 }
 
 void	ft_parse_width(va_list ap, const char *format, t_flags *flags)

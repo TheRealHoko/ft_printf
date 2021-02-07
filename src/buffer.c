@@ -6,15 +6,15 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 17:19:32 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/01 22:15:30 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/07 01:55:12 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_printf.h"
 
-static	t_buf g_buf;
+static t_buf	g_buf;
 
-void	init_buf()
+void	init_buf(void)
 {
 	g_buf.i = 0;
 	g_buf.size = 0;

@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 18:46:14 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/05 15:57:05 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/07 02:01:52 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@
 
 # define SIZE 100
 
-typedef struct	s_buf
+typedef struct s_buf
 {
 	char	buf[SIZE];
 	int		i;
 	int		size;
 }				t_buf;
 
-typedef struct	s_flags
+typedef struct s_flags
 {
 	int	i;
 	int	sign;
@@ -36,19 +36,19 @@ typedef struct	s_flags
 	int	width;
 }				t_flags;
 
-int		ft_printf(const char *, ...);
+int		ft_printf(const char *format, ...);
 void	ft_parsing(va_list ap, const char *format, t_flags *flags);
 void	ft_parse_flag(va_list ap, const char *format, t_flags *flags);
 void	ft_parse_width(va_list ap, const char *format, t_flags *flags);
 void	ft_parse_prec(va_list ap, const char *format, t_flags *flags);
 void	ft_parse_conv(va_list ap, const char *format, t_flags *flags);
-void    init_flags(t_flags *flags, int i);
+void	init_flags(t_flags *flags, int i);
 
-void    init_buf(void);
+void	init_buf(void);
 void	writec_buf(char s);
 void	writestr_buf(char *s, int i);
 int		display_buf(int fd);
-void    fill_buffer(char s, int i);
+void	fill_buffer(char s, int i);
 
 void	width(int len, t_flags *flags, int iss);
 void	prec(int len, t_flags *flags, int iss);

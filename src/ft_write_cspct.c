@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 16:32:18 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/07 18:07:28 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/07 20:30:59 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,14 @@ void	prec(int len, t_flags *flags, int iss)
 
 void	write_c(va_list ap, t_flags *flags)
 {
-	unsigned char	array[2];
+	unsigned char	c;
 
-	array[0] = va_arg(ap, int);
+	c = va_arg(ap, int);
 	if (flags->width && !flags->minus)
-		width(1, flags, 1);
-	writec_buf(*array);
+		width(1, flags, 0);
+	writec_buf(c);
 	if (flags->width && flags->minus)
-		width(1, flags, 1);
+		width(1, flags, 0);
 }
 
 void	write_s(va_list ap, t_flags *flags)

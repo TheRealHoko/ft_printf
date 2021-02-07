@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 16:32:18 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/07 20:54:31 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/07 20:56:57 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	write_c(va_list ap, t_flags *flags)
 	c = va_arg(ap, int);
 	if (flags->width && !flags->minus)
 		width(1, flags);
-	writec_buf(c);
+	writec_buf(&c);
 	if (flags->width && flags->minus)
 		width(1, flags);
 }

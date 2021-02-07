@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 18:46:14 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/07 02:01:52 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/07 14:32:17 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_parse_conv(va_list ap, const char *format, t_flags *flags);
 void	init_flags(t_flags *flags, int i);
 
 void	init_buf(void);
-void	writec_buf(char s);
+void	writec_buf(unsigned char s);
 void	writestr_buf(char *s, int i);
 int		display_buf(int fd);
 void	fill_buffer(char s, int i);

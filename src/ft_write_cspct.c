@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 16:32:18 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/08 15:47:09 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/08 17:41:17 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,7 @@ void	width(int len, t_flags *flags)
 	if (!flags->prec && !flags->n)
 		i = flags->width;
 	else if ((flags->prec > len) && (!flags->c || (flags->c == 'p')))
-	{
 		i = flags->width - flags->prec;
-		if (flags->c == 'p')
-			i -= 2;
-	}
 	else
 		i = flags->width - len;
 	if (flags->zero && (flags->c || (flags->prec == -1)))
@@ -36,6 +32,8 @@ void	width(int len, t_flags *flags)
 	}
 	else
 	{
+		if (flags->c == 'p')
+			i -= 2;
 		fill_buffer(' ', i);
 		if ((flags->sign == -1) && !flags->minus)
 		{

@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 16:32:18 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/08 19:17:40 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/08 19:24:18 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,11 @@ void	prec(int len, t_flags *flags)
 
 	if (!flags->zero && flags->c == 'p')
 		writestr_buf("0x", 2);
-	if (!ft_ischarset(flags->c, "cs%p"))
-		flags->c = 0;
-	else if (flags->c == 'p')
-		flags->c = 'p';
 	if (flags->sign == -1)
 		writec_buf('-');
-	if (!flags->c && (flags->prec > len))
+	if ((!flags->c || flags->c == 'p') && (flags->prec > len))
 	{
 		i = flags->prec - len;
-		if (flags->c == 'p')
-			i -= 2;
 		fill_buffer('0', i);
 	}
 }

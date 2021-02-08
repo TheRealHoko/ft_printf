@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 12:42:27 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/08 17:48:57 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/08 17:55:45 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,10 +116,10 @@ void	write_p(va_list ap, t_flags *flags)
 	i = va_arg(ap, unsigned long long);
 	if (!i)
 		flags->n = 0;
-	if (flags->zero && !flags->minus)
-		writestr_buf("0x", 2);
 	array = ft_ulltoa_base(i, "0123456789abcdef");
 	len = ft_strlen(array);
+	if ((flags->zero || flags->prec )&& !flags->minus)
+		writestr_buf("0x", 2);
 	if (!flags->prec && !i)
 		len = 0;
 	if ((flags->width || flags->zero) && !flags->minus)

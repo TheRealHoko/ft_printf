@@ -6,12 +6,11 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 17:55:56 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/07 15:01:08 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/07 21:02:12 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_printf.h"
-#include <stdio.h>
 
 void	ft_parse_flag(va_list ap, const char *format, t_flags *flags)
 {

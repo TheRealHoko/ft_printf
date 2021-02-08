@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 16:32:18 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/08 19:11:52 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/08 19:16:13 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ void	prec(int len, t_flags *flags)
 	if (!flags->c && (flags->prec > len))
 	{
 		i = flags->prec - len;
+		if (flags->c == 'p')
+			i -= 2;
 		fill_buffer('0', i);
 	}
 }

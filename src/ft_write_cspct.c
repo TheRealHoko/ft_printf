@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 16:32:18 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/08 18:06:01 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/08 18:12:24 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	width(int len, t_flags *flags)
 
 	if ((flags->c != 'c') && (flags->c != 's') && (flags->c != '%'))
 		flags->c = 0;
+	else if (flags->c == 'p')
+		flags->c = 'p';
 	if (!flags->prec && !flags->n)
 		i = flags->width;
 	else if ((flags->prec > len) && (!flags->c || (flags->c == 'p')))

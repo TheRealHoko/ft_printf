@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 16:32:18 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/08 17:41:17 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/08 18:06:01 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,18 @@ void	width(int len, t_flags *flags)
 		i = flags->width - flags->prec;
 	else
 		i = flags->width - len;
+	if (flags->c == 'p')
+		i -= 2;
 	if (flags->zero && (flags->c || (flags->prec == -1)))
 	{
+		if (flags->c == 'p' && (flags->prec == -1))
+			writestr_buf("0x", 2);
 		if (flags->sign == -1)
 			writec_buf('-');
 		fill_buffer('0', i);
 	}
 	else
 	{
-		if (flags->c == 'p')
-			i -= 2;
 		fill_buffer(' ', i);
 		if ((flags->sign == -1) && !flags->minus)
 		{
@@ -49,6 +51,8 @@ void	prec(int len, t_flags *flags)
 {
 	int	i;
 
+	if (!flags->zero && flags->c == 'p')
+		writestr_buf("0x", 2);
 	if ((flags->c != 'c') && (flags->c != 's') && (flags->c != '%'))
 		flags->c = 0;
 	if (flags->sign == -1)

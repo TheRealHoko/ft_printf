@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 12:42:27 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/09 16:17:32 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/09 17:07:39 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,8 +112,10 @@ void	write_p(va_list ap, t_flags *flags)
 	char				*array;
 	int					len;
 	unsigned long long	i;
+	int					j;
 
 	flags->c = 'p';
+	j = 0;
 	i = va_arg(ap, unsigned long long);
 	if (!i)
 		flags->n = 0;
@@ -130,8 +132,11 @@ void	write_p(va_list ap, t_flags *flags)
 	else if ((flags->prec > len) && !flags->minus)
 	{
 		if (flags->prec > len && !flags->zero)
+		{
 			writestr_buf("0x", 2);
-		prec(len, flags);
+			j = 2;
+		}
+		prec(len - j, flags);
 	}
 	if (!flags->zero && flags->prec < len)
 		writestr_buf("0x", 2);

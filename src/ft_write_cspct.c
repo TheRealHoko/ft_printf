@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 16:32:18 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/09 03:30:54 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/09 15:21:17 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,16 @@ void	width(int len, t_flags *flags)
 {
 	int	i;
 
-	if (!ft_ischarset(flags->c, "cs%p"))
+	if (!ft_ischarset(flags->c, "cs%"))
 		flags->c = 0;
-	else if (flags->c == 'p')
-		flags->c = 'p';
 	if (!flags->prec && !flags->n)
 		i = flags->width;
-	else if ((flags->prec > len) && (!flags->c || (flags->c == 'p')))
+	else if ((flags->prec > len) && !flags->c)
 		i = flags->width - flags->prec;
 	else
 		i = flags->width - len;
-	if (flags->zero && (flags->c || (flags->prec == -1)) && flags->c != 'p')
+	if (flags->zero && (flags->c || (flags->prec == -1)))
 	{
-		if (flags->c == 'p' && (flags->prec < len))
-			writestr_buf("0x", 2);
 		if (flags->sign == -1)
 			writec_buf('-');
 		fill_buffer('0', i);
@@ -37,8 +33,6 @@ void	width(int len, t_flags *flags)
 	else
 	{
 		fill_buffer(' ', i);
-		if ((flags->c == 'p') && !flags->prec && !flags->minus)
-			writestr_buf("0x", 2);
 		if ((flags->sign == -1) && !flags->minus)
 		{
 			writec_buf('-');
@@ -53,19 +47,13 @@ void	prec(int len, t_flags *flags)
 {
 	int	i;
 
-	if (!ft_ischarset(flags->c, "cs%p"))
+	if (!ft_ischarset(flags->c, "cs%"))
 		flags->c = 0;
-	else if (flags->c == 'p')
-		flags->c = 'p';
-	if (!flags->width && !flags->zero && flags->c == 'p')
-		writestr_buf("0x", 2);
 	if (flags->sign == -1)
 		writec_buf('-');
-	if ((!flags->c || flags->c == 'p') && (flags->prec > len))
+	if (!flags->c && (flags->prec > len))
 	{
 		i = flags->prec - len;
-		if (flags->c == 'p')
-			i += 2;
 		fill_buffer('0', i);
 	}
 }

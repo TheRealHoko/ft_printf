@@ -6,12 +6,12 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 18:40:20 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/07 20:34:05 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/09 19:21:28 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_printf.h"
-#include <stdio.h>
+
 void	init_flags(t_flags *flags, int i)
 {
 	flags->c = 0;
@@ -39,7 +39,7 @@ void	ft_parsing(va_list ap, const char *format, t_flags *flags)
 	}
 }
 
-int	ft_printf(const char *format, ...)
+int		ft_printf(const char *format, ...)
 {
 	va_list	ap;
 	t_flags	flags;

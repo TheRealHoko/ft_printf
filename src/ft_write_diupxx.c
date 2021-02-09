@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_write_diupxX.c                                  :+:      :+:    :+:   */
+/*   ft_write_diupxx.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 12:42:27 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/09 17:28:34 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/09 19:29:15 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	write_x(va_list ap, t_flags *flags)
 		width(len, flags);
 }
 
-void	write_X(va_list ap, t_flags *flags)
+void	write_upx(va_list ap, t_flags *flags)
 {
 	char			*array;
 	int				len;
@@ -112,36 +112,20 @@ void	write_p(va_list ap, t_flags *flags)
 	char				*array;
 	int					len;
 	unsigned long long	i;
-	int					j;
 
 	flags->c = 'p';
-	j = 0;
 	i = va_arg(ap, unsigned long long);
-	if (!i)
-		flags->n = 0;
 	array = ft_ulltoa_base(i, "0123456789abcdef");
 	len = ft_strlen(array) + 2;
-	if (!flags->prec && !i)
-		len = 0;
-	if (((flags->width > flags->prec) || flags->zero) && !flags->minus)
+	if ((flags->width || flags->zero) && !flags->minus)
 	{
 		if (flags->zero)
 			writestr_buf("0x", 2);
 		width(len, flags);
 	}
-	else if ((flags->prec > len) && !flags->minus)
-	{
-		if (flags->prec > len && !flags->zero)
-		{
-			writestr_buf("0x", 2);
-			j = 2;
-		}
-		prec(len - j, flags);
-	}
-	if (!flags->zero && flags->prec <= len)
+	if (!flags->zero)
 		writestr_buf("0x", 2);
-	if ((flags->prec != 0) || (i != 0))
-		writestr_buf(array, len - 2);
+	writestr_buf(array, len - 2);
 	if (flags->width && flags->minus)
 		width(len, flags);
 }

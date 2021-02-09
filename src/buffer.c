@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 17:19:32 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/07 14:32:34 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/09 19:26:25 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	init_buf(void)
 	g_buf.size = 0;
 }
 
-int	display_buf(int fd)
+int		display_buf(int fd)
 {
 	write(fd, g_buf.buf, g_buf.i);
 	g_buf.size += g_buf.i;

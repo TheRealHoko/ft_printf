@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 17:55:56 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/07 21:02:12 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/09 19:29:58 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	ft_parse_conv(va_list ap, const char *format, t_flags *flags)
 	else if (format[flags->i] == 'x')
 		write_x(ap, flags);
 	else if (format[flags->i] == 'X')
-		write_X(ap, flags);
+		write_upx(ap, flags);
 	else if (format[flags->i] == '%')
 		write_pct(flags);
 	init_flags(flags, 0);

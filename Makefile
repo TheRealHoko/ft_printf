@@ -6,7 +6,7 @@
 #    By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/17 18:10:22 by jzeybel           #+#    #+#              #
-#    Updated: 2021/02/01 16:29:42 by jzeybel          ###   ########.fr        #
+#    Updated: 2021/02/09 19:25:53 by jzeybel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CFLAGS = -Wall -Wextra -Werror
 SRC = src/ft_printf.c \
 	  src/buffer.c \
 	  src/ft_write_cspct.c \
-	  src/ft_write_diupxX.c \
+	  src/ft_write_diupxx.c \
 	  src/ft_parsing.c
 
 INC = inc/ft_printf.h

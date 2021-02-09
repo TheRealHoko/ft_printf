@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 16:32:18 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/09 15:46:11 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/09 15:55:34 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void	width(int len, t_flags *flags)
 			flags->sign = 1;
 		}
 	}
-//	if ((flags->prec > len) && !flags->minus)
-//		return (prec(len, flags));
+	if ((flags->prec > len) && !flags->minus)
+		return (prec(len, flags));
 }
 
 void	prec(int len, t_flags *flags)

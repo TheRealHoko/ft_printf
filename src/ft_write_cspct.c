@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 16:32:18 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/09 03:25:43 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/09 03:30:54 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	prec(int len, t_flags *flags)
 		flags->c = 0;
 	else if (flags->c == 'p')
 		flags->c = 'p';
-	if (!flags->width && !flags->zero)
+	if (!flags->width && !flags->zero && flags->c == 'p')
 		writestr_buf("0x", 2);
 	if (flags->sign == -1)
 		writec_buf('-');

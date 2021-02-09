@@ -6,7 +6,7 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 12:42:27 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/09 03:00:33 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/09 03:22:48 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ void	write_p(va_list ap, t_flags *flags)
 		width(len, flags);
 	else if (flags->prec > len)
 		prec(len, flags);
-	if ((!flags->zero && (flags->prec < len)) || (*array == '0'))
+	if ((!flags->zero && (flags->prec < len)) || !flags->n)
 		writestr_buf("0x", 2);
 	if ((flags->prec != 0) || (i != 0))
 		writestr_buf(array, len - 2);

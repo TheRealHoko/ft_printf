@@ -6,12 +6,11 @@
 /*   By: jzeybel <jzeybel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 12:42:27 by jzeybel           #+#    #+#             */
-/*   Updated: 2021/02/09 22:58:12 by jzeybel          ###   ########.fr       */
+/*   Updated: 2021/02/10 15:26:07 by jzeybel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_printf.h"
-#include <stdio.h>
 
 void	write_di(va_list ap, t_flags *flags)
 {
@@ -118,7 +117,8 @@ void	write_p(va_list ap, t_flags *flags)
 	array = ft_ulltoa_base(i, "0123456789abcdef");
 	len = ft_strlen(array) + 2;
 	if (!i && !flags->prec)
-		len = 0;
+		//len = 0;
+		flags->n = 0;
 	if ((flags->width || flags->zero) && !flags->minus)
 	{
 		if (flags->zero)
